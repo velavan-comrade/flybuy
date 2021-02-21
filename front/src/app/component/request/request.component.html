@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <td>
+            <input type="text" placeholder="product name" #box>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="number" placeholder="quantity" #box1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="postReq(box.value,box1.value)">SEND</button>
+        </td>
+    </tr>
+    
+</table>

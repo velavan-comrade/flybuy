@@ -1,0 +1,8 @@
+<div [hidden]="s">
+    <input type="number" #box>
+    <button (click)="autoreq(box.value)" >start</button>
+</div>
+<div [hidden]="!s">
+    <p style="color: lightgreen;">REQUEST SENT</p>
+</div>
+<p>{{message}}</p>

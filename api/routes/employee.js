@@ -6,7 +6,7 @@ const { prependOnceListener } = require("../models/Employees");
 const Employee = require("../models/Employees");
 
 router.get('/', (req, res) => {
-
+console.log("in");
     Employee.find()
             .exec()
             .then(docs => {
@@ -47,13 +47,13 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     const newEmployee = new Employee({
-        _id: new mongoose.Types.ObjectId("hexaString"),
+        _id: new mongoose.Types.ObjectId(),
         employeeName: req.body.employeeName,
         age: req.body.age,
-         Qualification: req.body.qualiy,
-        Designation: req.body.desgi,
-        Salary: req.body.Salary,
-        Branch: req.body.Branch,
+         qualification: req.body.qualification,
+        designation: req.body.desgination,
+        salary: req.body.salary,
+        branch: req.body.branch,
         dateCreated: new Date()
     });
 
@@ -125,10 +125,11 @@ router.get('/:employeeId', (req, res) => {
 });
 
 router.put('/:employeeId', (req, res) => {
-    const empId = req.params.employeeId;
-    
+    const EmployeeId = req.params.employeeId;
+    console.log(req.body);
     const update = {};
     for (const gvn of req.body) {
+        console.log("in");
         update[gvn.property] = gvn.value;
     }
 
@@ -195,16 +196,3 @@ router.delete('/:employeeId', (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
