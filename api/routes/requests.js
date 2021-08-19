@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
 
     const newRequest = new Requests({
         _id: new mongoose.Types.ObjectId(),
-        productName:req.body.productName,
+        productname:req.body.productname,
         //productId:Number,
         quantity:req.body.quantity,
         status:"require",

@@ -16,6 +16,7 @@ router.get('/ses',(req,res)=>{
     req.session.userName=username.user;
    console.log( req.session.userName);
    res.json({
+       data:"gi",
        name:req.session.userName,
    })//this.route.navigate(['/page']);
    });

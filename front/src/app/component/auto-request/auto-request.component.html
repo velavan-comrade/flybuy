@@ -1,8 +1,9 @@
-<div [hidden]="s">
+<div [hidden]="s" align="center" style="margin-top: 28%;">
+    <span style="color: red;">*Enter the minium value to check</span><br><br>
     <input type="number" #box>
-    <button (click)="autoreq(box.value)" >start</button>
+    &nbsp;<button (click)="autoreq(box.value)" >start</button>
 </div>
 <div [hidden]="!s">
-    <p style="color: lightgreen;">REQUEST SENT</p>
+    <p style="color: green;">REQUEST SENT</p>
 </div>
-<p>{{message}}</p>
+<p style="color: red;">{{message}}</p>

@@ -1,0 +1,15 @@
+table{
+    text-align: center;
+    
+   background-color:whitesmoke;
+     width: 70%;
+    text-align: center;
+    
+}
+button{
+    box-sizing: border-box;
+    border:none;
+    color: white;
+    background-color: teal;
+    padding: 5px 3px;
+    margin-left: 80%;}

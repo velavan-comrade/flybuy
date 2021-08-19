@@ -11,7 +11,10 @@ const requestHandleRoutes=require('./api/routes/requestHandle');
 const statusRoutes=require('./api/routes/status');
 const autoRequestRoutes=require('./api/routes/autorequest');
 const productRoutes=require('./api/routes/products');
-const loginRoutes=require('./api/routes/login')
+const loginRoutes=require('./api/routes/login');
+const mainRoutes=require('./api/routes/main');
+const deliveryRoutes=require('./api/routes/delivery')
+const studentRoutes=require('./api/routes/student');
 
 mongoose.connect('mongodb://localhost/shop', {useNewUrlParser: true,  useUnifiedTopology: true });
 var db=mongoose.connection;
@@ -44,9 +47,12 @@ app.use('/employee',empRoutes);
 app.use ('/requests',requestRoutes);
 app.use('/requestHandle',requestHandleRoutes);
 app.use('/status',statusRoutes);
-app.use('/product',productRoutes);
+app.use('/products',productRoutes);
 app.use('/autorequest',autoRequestRoutes);
 app.use('/login',loginRoutes);
+app.use('/main',mainRoutes);
+app.use('/delivery',deliveryRoutes);
+app.use('/student',studentRoutes);
 
 app.use((req, res, next) => {
     console.log(next)

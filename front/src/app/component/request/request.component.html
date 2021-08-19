@@ -1,18 +1,24 @@
-<table>
-    <tr>
+    
+<table align="center" [hidden]="s">
+    <br>
+    
+    <tr align="center">
         <td>
-            <input type="text" placeholder="product name" #box>
+            <select name="pn" #box>
+                <option value={{x.productname}} *ngFor="let x of productn.data">{{x.productname}}</option>
+            </select>
         </td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>
             <input type="number" placeholder="quantity" #box1>
         </td>
     </tr>
-    <tr>
+    <tr align="center">
         <td>
             <button (click)="postReq(box.value,box1.value)">SEND</button>
         </td>
     </tr>
-    
+    <br>
 </table>
+<p [hidden]="!s">!!!!SENT!!!</p>

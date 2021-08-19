@@ -9,6 +9,10 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { AutoRequestComponent } from './component/auto-request/auto-request.component';
 import { StatusComponent } from './component/status/status.component';
 import { RequestComponent } from './component/request/request.component';
+import { StocksComponent } from './component/stocks/stocks.component';
+import { RequestHandleComponent } from './component/request-handle/request-handle.component';
+import { DeliveryComponent } from './component/delivery/delivery.component';
+import { StudentComponent } from './component/student/student.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { RequestComponent } from './component/request/request.component';
     PageNotFoundComponent,
     AutoRequestComponent,
     StatusComponent,
-    RequestComponent
+    RequestComponent,
+    StocksComponent,
+    RequestHandleComponent,
+    DeliveryComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

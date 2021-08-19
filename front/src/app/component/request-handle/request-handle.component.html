@@ -1,0 +1,17 @@
+<button (click)="toggle()">SENT</button><button (click)="toggle()">REQUIRE</button>
+<table [hidden]="s">
+    <tr style="color: white;background-color: blue;">
+        <th>Product</th><th>Status</th>
+    </tr>
+    <tr *ngFor="let x of request.data">
+        <td *ngIf="x.status!='require'">{{x.productname}}</td><td *ngIf="x.status!='require'">{{x.status}}</td>
+    </tr>
+</table>
+<table [hidden]="!s">
+    <tr style="color: white;background-color: blue;">
+        <th>Product</th><th>Status</th>
+    </tr>
+    <tr *ngFor="let x of request.data">
+        <td *ngIf="x.status=='require'">{{x.productname}}</td><td *ngIf="x.status=='require'">{{x.status}}</td>
+    </tr>
+</table>

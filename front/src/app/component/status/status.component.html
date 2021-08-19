@@ -1,7 +1,7 @@
-<table border="1">
-    <tr><th>Product</th><th>Status</th>
+<table border="1" align="center">
+    <tr style="background-color: mediumblue;color: white;"><th>Product</th><th>Status</th>
     </tr>
     <tr *ngFor="let x of data1.data">
-        <td>{{x.productName}}</td><td>{{x.status}}</td>
+        <td>{{x.productname}}</td><td><span class="blink">'{{x.status}}'</span></td>
     </tr>
 </table>

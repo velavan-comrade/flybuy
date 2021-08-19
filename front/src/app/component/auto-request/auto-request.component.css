@@ -2,3 +2,13 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+  button{
+    box-sizing: border-box;
+    border:none;
+    color: white;
+    background-color: teal;
+    padding: 7px 10px;
+}
+input{
+  padding: 7px;
+}

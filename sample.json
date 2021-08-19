@@ -1,14 +1,25 @@
 
 {
 "sample":{
-"productname":"aaa",
-    "quantity":3,
+"productname":"bbb",
+    "quantity":3000,
     "status":"require"
 },
 "sample1":
 {
-    "productname":"ccc",
-    "quantity":10,
+    "productname":"5-star",
+    "quantity":1000000,
     "status":"require"
-}
+},
+"sample2":{
+    "productname":"aaa",
+        "quantity":3000,
+        "status":"require"
+    },
+    "sample3":
+    {
+        "productname":"ccc",
+        "quantity":1000000,
+        "status":"require"
+    }
 }

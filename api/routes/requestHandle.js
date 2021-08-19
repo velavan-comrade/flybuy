@@ -4,100 +4,87 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const { prependOnceListener } = require("../models/request");
 const Requests = require("../models/request");
-const Products = require("../models/product");
+const M_Products=require("../models/main_product");
+const Delivery=require("../models/delivery");
 router.get('/', (req, res) => {
+    var get_product=[];
+    var count=0;
         Requests.find()
                 .exec()
                 .then(docs => {
-
                  for (const x of docs) {
                    if (x.status=="require") {
-                    Products.findOne({"productname":x.productname})
-                    .exec()
-                    .then(data=>{
-                        
-                           if(data.count1>=x.quantity) {
-                               u_count=data.count1-x.quantity;
-                               Products.findOneAndUpdate({"productname":x.productname},{"count1":u_count},{useFindAndModify: false}).exec().then(data=>console.log(data));
-                              Requests.findOneAndUpdate({"productname":x.productname},{status:"SENT"},{useFindAndModify: false}).exec().then(console.log("stock clear"));
+                       console.log(x.status);
+                        M_Products.findOne({"productname":x.productname})
+                                  .exec()
+                                  .then(data=>{
+                                if(data.quantity>=x.quantity) {
+                                    count=count+1;
+                                   u_count=data.quantity-x.quantity;
+                                  M_Products.findOneAndUpdate({"productname":x.productname},{"quantity":u_count},{useFindAndModify: false}).exec().then(
+                                 Requests.findOneAndUpdate({"_id":x._id},{"status":"SENT"},{useFindAndModify: false}).exec().then(data=>{
+                                const newDeli=new Delivery({
+                                    _id:data._id,
+                                    productname:data.productname,
+                                    quantity:data.quantity
+
+                                });
+                                newDeli.save()
+                                        .then(error=>console.log(error)
+                                        )
+                                  } ))
                              
                            }
                            else{
+                               get_product=x.productname;
                                console.log("noo stock");
                            }
                         }
                    ,error=>console.log(error) );
                        
                    } else {
+                       console.log("here")
                        continue;
                        
-                   }
-                   
+                   } 
                      
                  }
-                    if (docs.length > 0) {
-                        res.status(200)
-                        .json({
-                            status : "success",
-                            message: "Requests Details",
-                            count : docs.length,
-                            data : docs
-                        });
-                    } else {
-                        res.status(200)
-                        .json({
-                            status : "success",
-                            message: "NO Requests",
-                            count: 0,
-                            data : []
-                        });
-                    }
-                })
-                .catch( err => {
-                    res.status(500)
-                    .json([
-                        {
-                            status: "failure",
-                            message: "unable to fetch Request detail",
-                            error: err,
-                            data: []
-                        }
-                    ]);
-                });
-        // console.log(global.document)  //         
-              
     });
-  
-
-    router.put('/', (req, res) => {
-        //get details about the hub quantity;
-        Requests.find({'quantity':20})
-                .exec()
-                .then(doc=>res.send(doc));
-        Requests.findOneAndUpdate({"productName":req.params.productName},{"quantity":10})
-                .exec()
-                .then(result => {
-                    res.status(200)
-                    .json([
-                        {
-                            reslut:result,
-                            status: 'success',
-                            message: "product sent"
-                        }
-                    ]);
-                })
-                .catch(err => {
-                    console.log('erroe: ', err);
-                    res.status(500)
-                    .json([
-                        {
-                            status: 'failure',
-                            message: "unable to sent  Detail",
-                            data : []
-                        }
-                    ]);
-                })
-        
+});
+  router.get('/processed',(req,res)=>{
+    Requests.find()
+    .exec()
+    .then(docs => {
+        if (docs.length > 0) {
+            res.status(200)
+            .json({
+                status : "success",
+                message: "Requests Details",
+                count : docs.length,
+                data : docs
+            });
+        } else {
+            res.status(200)
+            .json({
+                status : "success",
+                message: "NO Requests",
+                count: 0,
+                data : []
+            });
+        }
+    })
+    .catch( err => {
+        res.status(500)
+        .json([
+            {
+                status: "failure",
+                message: "unable to fetch Request detail",
+                error: err,
+                data: []
+            }
+        ]);
     });
 
-    module.exports=router;
+  });
+
+    module.exports=router; 

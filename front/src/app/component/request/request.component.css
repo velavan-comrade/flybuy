@@ -1,0 +1,32 @@
+table{
+margin-top: 20%;
+background-color: thistle;
+width: 70%;
+height:200px;
+}
+.div{
+    width: 70%;
+    height: 25%;
+}
+button{
+    box-sizing: border-box;
+    border:none;
+    color: white;
+    background-color: teal;
+    padding: 7px 10px;
+}
+body{
+    background-color: lightblue;
+}
+input{
+    padding: 10px 30px;
+    border: none;
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  select{
+    padding: 10px 80px;
+    border: none;
+  }

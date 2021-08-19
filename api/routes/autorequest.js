@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     var q=url.parse(req.url, true).query;
      console.log(q.count1);
 
-    Product.find({"count1":{$lt:q.count1}})
+    Product.find({"quantity":{$lt:q.count1}})
         .exec()
         .then(doc => {
             console.log("Found: ", doc);
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
     {
         title.push({
             _id:new mongoose.Types.ObjectId(),
-            productName:req.body[i],
+            productname:req.body[i],
             quantity:20,
             status:"require"
         })

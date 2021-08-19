@@ -1,0 +1,14 @@
+<body>
+    <h1>STUDENT</h1>
+    <div>
+        <input type="text" placeholder="Student Name" #name>
+        <input type="text" placeholder="Maths mark" #mat>
+        <input type="text" placeholder="English" #eng>
+        <input type="text" placeholder="Tamil Name" #tam>
+        <input type="text" placeholder="Science Name" #sci>
+        <input type="text"placeholder="Social Science Name" #ss>
+        <input type="text" placeholder="address" #add>
+        <input type="text" placeholder="latitude" #lat>
+        <button (click)="postReq(name.value,mat.value,tam.value,sci.value,ss.value,add.value,lat.value)">ADD</button>
+    </div>
+</body>

@@ -1,0 +1,8 @@
+<table border="1" align="center">
+    <tr style="color: white;background-color: blue;">
+        <th >Products</th><th>Quantity</th>
+    </tr>
+    <tr class="tr" *ngFor="let x of stock.data">
+        <td>{{x.productname}}</td><td>{{x.quantity}}</td>
+    </tr>
+</table>

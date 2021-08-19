@@ -1,0 +1,10 @@
+<table>
+    <tr style="background-color: blue;color: white;">
+        <th>Product</th><th>Quantity</th>
+    </tr>
+    <tr *ngFor="let x of deli.data">
+           <td>{{x.productname}}</td><td>{{x.quantity}}</td>
+    </tr><br>
+    
+    <button (click)="deliver()">Delivered</button>
+</table>
